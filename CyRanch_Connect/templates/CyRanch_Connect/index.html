@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+    <div class="container"><div class="card shadow-lg mx-auto my-5 p-3">
+  <div class="card-body">
+    <h5 class="card-title">Welcome to Cypress Connect</h5>
+    <p class="card-text">Your place to track your participation in school events while earning rewards!</p>
+    <a href="{% url 'CyRanch_Connect:events' %}" class="btn  mx-auto " style="background-color: #20296d; color: white">View Events</a>
+  </div>
+</div></div>
+
+
+{#    <iframe id="cs-fullscreen-video" class="cs-fullscreen-video" aria-hidden="true" tabindex="-1" allowfullscreen="1"#}
+{#            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"#}
+{#            title="Web Video"#}
+{#            src="https://www.youtube.com/embed/5bSAGeBsxoI?autoplay=1&amp;mute=1&amp;modestbranding=1&amp;controls=0&amp;rel=0&amp;showinfo=0&amp;wmode=opaque&amp;loop=1&amp;playlist=5bSAGeBsxoI&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.cfisd.net&amp;widgetid=1"#}
+{#            width="200" height="113" frameborder="0"></iframe>#}
+{% endblock %}

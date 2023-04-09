@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Prizes for this Quarter{% endblock %}
+
+
+{% block content %}
+    <div class="container" style="margin-bottom: 10px;">
+
+        <h1 class="mt-5 mb-4" style="font-family: Hind; text-align: center;">Prizes for this Quarter</h1>
+        {% if prizes %}
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for prize in prizes %}
+                    <div class="col">
+                        <div class="card" style="padding: 0px;border-style: none;">
+{#                            <a class="text-decoration-none text-reset"#}
+{#                               href="{% url 'Seedlet:product' product.category.slug product.slug %}">#}
+                                <img class="card-img-top w-100 d-block" data-bss-disabled-mobile="true"
+                                     data-bss-hover-animate="pulse" src="{{ prize.thumbnail.url }}">
+                                <div class="card-body" style="padding-left: 0px; padding-right: 0px">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6 d-md-flex d-xl-flex justify-content-md-start justify-content-xl-start"><span
+                                                    style="font-family: Hind, sans-serif;font-weight: bold;">{{ prize.name }}</span>
+                                            </div>
+                                            <div class="col-md-6 d-md-flex d-xl-flex justify-content-md-end justify-content-xl-end"><span
+                                                    style="font-family: Hind, sans-serif; color: #FFD801">✪ {{ prize.price }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+{#                            </a>#}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>{% else %}
+            <h4 style="font-family: Hind; margin-top: 70px" class="text-center">No prizes are available at the moment</h4>{% endif %}
+    </div>
+
+{% endblock %}

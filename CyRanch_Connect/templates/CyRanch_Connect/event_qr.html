@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block meta %}
+    <meta http-equiv="refresh" content="5">
+{% endblock %}
+
+{% block content %}
+    <div id="qrcode"class="h-100 d-flex align-items-center justify-content-center py-5"></div>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+
+    <script type="text/javascript">
+        var qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: '{{ qr_url }}',
+            width: window.screen.availHeight *.5,
+            height: window.screen.availHeight*.5,
+            colorDark: '#20296D',
+            colorLight: '#FFF',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
+
+
+
+
+{% endblock %}

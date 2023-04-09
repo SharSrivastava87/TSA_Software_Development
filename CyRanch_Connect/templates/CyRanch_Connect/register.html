@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class=" mt-5 mx-auto px-xxl-2" style=" height: 500px">
+            <h1 style="text-align: center; font-family: Hind;margin-top:20px">Sign Up</h1>
+
+              <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-success border rounded-0 shadow-none" type="submit"
+                    style="width: 100%;background: #ffd801;color: #000000"
+                   onMouseOver="this.style.background='#d9b800'"
+                   onMouseOut="this.style.background='#ffd801'" value="Register">Register</button>
+              {% if form.community_id.errors %}
+                    {% for error in form.community_id.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+              {% endif %}
+              <div class="form-group form-check" style="padding-top: 2%; color: #000000">
+                  <input type="checkbox" class="form-check-input" id="terms" required>
+                  <label class="form-check-label" for="terms">I have read and accept the <a href="/Terms&Conditions" target="_blank" style="color: blue;">Terms &amp; Conditions</a></label>
+              </div>
+
+
+
+              </form>
+        </div>
+    </div>
+
+  </form>
+{% endblock %}
+
