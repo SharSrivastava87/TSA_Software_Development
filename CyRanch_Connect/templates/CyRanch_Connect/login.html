@@ -2,73 +2,53 @@
 {% load static %}
 {% block title %}Log In{% endblock %}
 {% block content %}
-<div class="container">
-    <div class=" mt-5 mx-auto px-xxl-2" style=" height: 500px">
-        <h1 style="text-align: center; font-family: Hind;margin-top:20px">Log In</h1>
-        <form method="POST" action="{% url 'CyRanch_Connect:login' %}" class="needs-validation md-3" id="login-form"
-              style="margin-bottom:20px" novalidate>
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.path }}">
-            <div class="mb-3">
-                <label for="student_id">Student ID</label>
-                <input name="student_id" id="student_id" class="form-control rounded-0 shadow-none"
-                       type="text" required/>
-                {% if error %}
-                    <script>
-                        document.getElementById("student_id").classList.add("is-invalid");
-                    </script>
-                    <div class="invalid-feedback">The student ID or password you have entered is invalid.</div>
-                {% else %}
-                    <div class="invalid-feedback">Please enter a valid student ID.</div>
-                {% endif %}
-            </div>
-            <div class="mb-3">
-                <label for="password">Password</label>
-                <input name="password" id="password" class="form-control rounded-0 shadow-none"
-                       type="password" required/>
-
-                {% if error %}
-                    <script>
-                        document.getElementById("password").classList.add("is-invalid");
-                    </script>
-                    <div class="invalid-feedback">The student ID or password you have entered is invalid.</div>
-                {% else %}
-                    <div class="invalid-feedback">Please enter a valid password.</div>
-                {% endif %}
-            </div>
-
-            <input class="btn btn-success border rounded-0 shadow-none" type="submit"
-                   id="login" style="width: 100%;background: #ffd801;color: #000000"
-                   onMouseOver="this.style.background='#d9b800'"
-                   onMouseOut="this.style.background='#ffd801'" value="Log In">
-            <script>
-                (function validate_form() {
-                    'use strict'
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var form = document.getElementById('login-form');
-                    // Loop over them and prevent submission
-                    form.addEventListener('submit', function (e) {
-
-                        if (!form.checkValidity()) {
-                            e.preventDefault()
-                            e.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, true)
-
-                })()
-            </script>
-        <p class="mb-0">Don't have an account?</p>
-        <a class="link-secondary" href="{% url "CyRanch_Connect:register" %}">Sign-Up here</a>
-
-
-        </form>
-        {#            <div class="text-center"><a class="text-decoration-none"#}
-        {#                                        style="color: #87aa3e;font-family: Hind, sans-serif;"#}
-        {#                                        href="{% url 'Seedlet:register' %}">Don't have an account? Sign up.</a></div>#}
+<div class="container d-flex justify-content-center align-items-center" style="height: 80vh">
+  <div class="card" style="width: 25rem;">
+    <div class="card-body">
+      <h1 class="card-title text-center mb-4">Log In</h1>
+      <form method="POST" action="{% url 'CyRanch_Connect:login' %}" class="needs-validation" id="login-form" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <div class="form-floating mb-3">
+          <input name="student_id" id="student_id" class="form-control rounded-0 shadow-none" type="text" placeholder=" " required/>
+          <label for="student_id">Student ID</label>
+          {% if error %}
+            <div class="invalid-feedback">The student ID or password you have entered is invalid.</div>
+          {% else %}
+            <div class="invalid-feedback">Please enter a valid student ID.</div>
+          {% endif %}
+        </div>
+        <div class="form-floating mb-3">
+          <input name="password" id="password" class="form-control rounded-0 shadow-none" type="password" placeholder=" " required/>
+          <label for="password">Password</label>
+          {% if error %}
+            <div class="invalid-feedback">The student ID or password you have entered is invalid.</div>
+          {% else %}
+            <div class="invalid-feedback">Please enter a valid password.</div>
+          {% endif %}
+        </div>
+        <button class="btn btn-success border rounded-0 shadow-none" type="submit" style="width: 100%;background: #ffd801;color: #000000" onMouseOver="this.style.background='#d9b800'" onMouseOut="this.style.background='#ffd801'" value="Log In">Log In</button>
+        <div class="text-center mt-2">
+          <p class="mb-0">Don't have an account?</p>
+          <a class="link-secondary" href="{% url "CyRanch_Connect:register" %}">Sign-Up here</a>
+        </div>
+      </form>
+      <script>
+        (function validate_form() {
+          'use strict'
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var form = document.getElementById('login-form');
+          // Loop over them and prevent submission
+          form.addEventListener('submit', function (e) {
+            if (!form.checkValidity()) {
+              e.preventDefault()
+              e.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, true)
+        })()
+      </script>
     </div>
-
+  </div>
 </div>
-
 {% endblock %}
