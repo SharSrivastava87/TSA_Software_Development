@@ -127,3 +127,4 @@ python manage.py dbrestore
 ## Contact
 
 [siddharth.radh@gmail.com](mailto:siddharth.radh@gmail.com)
+[sharvay.srivastava@outlook.com](mailto:sharvay.srivastava@outlook.com)
