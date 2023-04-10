@@ -37,7 +37,7 @@
 
                 <div class="tab-pane fade show active" id="grade-9" role="tabpanel" aria-labelledby="grade-9">
                     <table class="table">
-                        <thead>
+                        <thead style="background-color: #444444; color: #fff;">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
@@ -46,39 +46,43 @@
                         </thead>
                         <tbody>
                         {% for student in grade_nine %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ student }}</td>
-                                <td style="color: #FFD801">✪ {{ student.points }}</td>
-                            </tr>
+                          <tr style="background-color: {% cycle '#ffffff' '#f2f2f2' %}">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ student }}</td>
+                            <td style="color: #FFD801">✪ {{ student.points }}</td>
+                          </tr>
                         {% endfor %}
+
+
                         </tbody>
                     </table>
                 </div>
 
                 <div class="tab-pane fade show" id="grade-10" role="tabpanel" aria-labelledby="grade-10">
                     <table class="table">
-                        <thead>
-                        <tr>
+                        <thead style="background-color: #444444; color: #fff;">
+                          <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Points</th>
-                        </tr>
+                          </tr>
                         </thead>
+
+
                         <tbody>
                         {% for student in grade_ten %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ student }}</td>
-                                <td style="color: #FFD801">✪ {{ student.points }}</td>
-                            </tr>
+                          <tr style="background-color: {% cycle '#ffffff' '#f2f2f2' %}">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ student }}</td>
+                            <td style="color: #FFD801">✪ {{ student.points }}</td>
+                          </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                 </div>
                 <div class="tab-pane fade show" id="grade-11" role="tabpanel" aria-labelledby="grade-11">
                     <table class="table">
-                        <thead>
+                        <thead style="background-color: #444444; color: #fff;">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
@@ -87,18 +91,18 @@
                         </thead>
                         <tbody>
                         {% for student in grade_eleven %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ student }}</td>
-                                <td style="color: #FFD801">✪ {{ student.points }}</td>
-                            </tr>
+                          <tr style="background-color: {% cycle '#ffffff' '#f2f2f2' %}">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ student }}</td>
+                            <td style="color: #FFD801">✪ {{ student.points }}</td>
+                          </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                 </div>
                 <div class="tab-pane fade show" id="grade-12" role="tabpanel" aria-labelledby="grade-12">
                     <table class="table">
-                        <thead>
+                        <thead style="background-color: #444444; color: #fff;">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
@@ -107,11 +111,11 @@
                         </thead>
                         <tbody>
                         {% for student in grade_twelve %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ student }}</td>
-                                <td style="color: #FFD801">✪ {{ student.points }}</td>
-                            </tr>
+                          <tr style="background-color: {% cycle '#ffffff' '#f2f2f2' %}">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ student }}</td>
+                            <td style="color: #FFD801">✪ {{ student.points }}</td>
+                          </tr>
                         {% endfor %}
                         </tbody>
                     </table>
