@@ -193,3 +193,6 @@ def register(request):
 
 def terms(request):
     return render(request, 'CyRanch_Connect/Terms&Conditions.html')
+
+def donate(request):
+    return render(request, 'CyRanch_Connect/donate.html')

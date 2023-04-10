@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5" style="background-color: #20296d; color: #fff; padding: 30px; border-radius: 5px;">
+      <h1 class="text-center mb-4">Donate</h1>
+      <p class="text-center">Thank you for considering a donation to our organization! Your generosity helps us continue to provide valuable services to our community.</p>
+
+      <div class="d-flex justify-content-center mt-5">
+        <div class="form-group">
+          <label for="donation-amount" class="d-block mb-3 text-center" style="color: #f9c836;">Enter Donation Amount:</label>
+          <div class="input-group">
+            <span class="input-group-text" style="background-color: #fff; color: #1e2331;">$</span>
+            <input type="number" id="donation-amount" name="donation-amount" step="0.01" min="0" placeholder="Enter amount" class="form-control" required style="background-color: #fff; color: #1e2331;">
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4">
+        <div id="paypal-button-container" class="paypal-buttons">
+        </div>
+      </div>
+    </div>
+
+
+
+  <style>
+    .paypal-buttons {
+      width: 100%;
+      max-width: 500px;
+      margin-top: 20px;
+    }
+
+    .paypal-buttons .paypal-button-container {
+      width: 100%;
+    }
+  </style>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=Ae-eAk1xKzuXx1cAzLlcdtWanb9qrGh0NDSS1bd66Do_IQuVwFrnBiKb3hPVW4w7ZUteGEbgrE8s0i9v&currency=USD&intent=capture&enable-funding=venmo" data-sdk-integration-source="integrationbuilder"></script>
+  <script>
+    const paypalButtonsComponent = paypal.Buttons({
+        // optional styling for buttons
+        // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+        style: {
+          color: "gold",
+          shape: "pill",
+          layout: "vertical"
+        },
+
+        // set up the transaction
+        createOrder: (data, actions) => {
+            // pass in any options from the v2 orders create call:
+            // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
+            const donationAmount = document.getElementById('donation-amount').value;
+            const createOrderPayload = {
+                purchase_units: [
+                    {
+                        amount: {
+                            value: donationAmount
+                        }
+                    }
+                ]
+            };
+
+            return actions.order.create(createOrderPayload);
+        },
+
+        // finalize the transaction
+        onApprove: (data, actions) => {
+            const captureOrderHandler = (details) => {
+                const payerName = details.payer.name.given_name;
+                window.location.href = '/';
+            };
+
+            return actions.order.capture().then(captureOrderHandler);
+        },
+
+        // handle unrecoverable errors
+        onError: (err) => {
+            console.error('An error prevented the buyer from checking out with PayPal');
+        }
+    });
+
+    paypalButtonsComponent
+        .render("#paypal-button-container")
+        .catch((err) => {
+            console.error('PayPal Buttons failed to render');
+        });
+  </script>
+
+
+{% endblock %}
