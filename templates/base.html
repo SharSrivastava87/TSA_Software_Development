@@ -82,14 +82,14 @@
                     <div class="toast-header" style="background: #d5eca8"><i class="fa-solid fa-circle-check"
                                                                              style="margin-right: 7px;color: var(--bs-success);"></i><strong
                             class="me-auto"
-                            style="color: #ffffff;font-family: Hind, sans-serif;">Success</strong><small>1
+                            style="color: #000000;font-family: Hind, sans-serif;">Success</strong><small>1
                         min
                         ago</small>
                         <button class="btn-close ms-2 mb-1 close shadow-none" data-bs-dismiss="toast"></button>
                     </div>
                     <div class="toast-body d-xl-flex justify-content-between align-items-xl-center" role="alert"
                          style="background: #ffffff;">
-                        <span style="font-size: 17px; color: #ffffff;">{{ message }}</span>
+                        <span style="font-size: 17px; color: #000000;">{{ message }}</span>
                     </div>
                 </div>
             {% elif message.tags == 'warning' %}
@@ -97,26 +97,26 @@
                     <div class="toast-header" style="background: #fdfaaa;"><i class="fa-solid fa-circle-exclamation"
                                                                               style="margin-right: 7px;color: var(--bs-warning);"></i><strong
                             class="me-auto"
-                            style="color: #ffffff;font-family: Hind, sans-serif;">Warning</strong><small>1 min
+                            style="color: #000000;font-family: Hind, sans-serif;">Warning</strong><small>1 min
                         ago</small>
                         <button class="btn-close ms-2 mb-1 close shadow-none" data-bs-dismiss="toast"></button>
                     </div>
                     <div class="toast-body d-xl-flex justify-content-between align-items-xl-center" role="alert"
                          style="background: #ffffff"><span
-                            style="font-size: 18px;color: #ffffff;">{{ message }}</span></div>
+                            style="font-size: 18px;color: #000000;">{{ message }}</span></div>
                 </div>
             {% elif message.tags == 'info' %}
                 <div class="toast fade show border-0" role="alert" style="display: block; margin-bottom: 5px">
                     <div class="toast-header" style="background: #aaf1fd;">
                         <i class="fa-solid fa-circle-info" style="margin-right: 7px;color: var(--bs-info);"></i><strong
                             class="me-auto"
-                            style="color: #ffffff;font-family: Hind, sans-serif;">Information</strong><small>1 min
+                            style="color: #000000;font-family: Hind, sans-serif;">Information</strong><small>1 min
                         ago</small>
                         <button class="btn-close ms-2 mb-1 close shadow-none" data-bs-dismiss="toast"></button>
                     </div>
                     <div class="toast-body d-xl-flex justify-content-between align-items-xl-center" role="alert"
                          style="background: #ffffff"><span
-                            style="font-size: 18px;color: #ffffff;">{{ message }}</span></div>
+                            style="font-size: 18px;color: #000000;">{{ message }}</span></div>
                 </div>
             {% elif message.tags == 'error' %}
                 <div class="toast fade show border-0" role="alert" style="display: block; margin-bottom: 5px">
@@ -125,13 +125,13 @@
                            style="margin-right: 7px;color: var(--bs-danger);"></i>
                         <strong
                                 class="me-auto"
-                                style="color: #ffffff;font-family: Hind, sans-serif;">Error</strong><small>1 min
+                                style="color: #000000;font-family: Hind, sans-serif;">Error</strong><small>1 min
                         ago</small>
                         <button class="btn-close ms-2 mb-1 close shadow-none" data-bs-dismiss="toast"></button>
                     </div>
                     <div class="toast-body d-xl-flex justify-content-between align-items-xl-center" role="alert"
                          style="background: #ffffff"><span
-                            style="font-size: 18px;color: #ffffff;">{{ message }}</span></div>
+                            style="font-size: 18px;color: #000000;">{{ message }}</span></div>
                 </div>
             {% endif %}
         {% endfor %}
