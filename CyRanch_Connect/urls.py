@@ -19,4 +19,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('Terms&Conditions/', views.terms),
     path('donate/', views.donate, name='donate'),
+    path('Location/', views.location, name='Location'),
 ]

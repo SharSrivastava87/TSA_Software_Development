@@ -196,3 +196,7 @@ def terms(request):
 
 def donate(request):
     return render(request, 'CyRanch_Connect/donate.html')
+
+def location(request):
+    events = Event.objects.all().filter(date__gte=timezone.now()).order_by('date')
+    return render(request, 'CyRanch_Connect/Location.html', {'events': events})

@@ -30,6 +30,8 @@ class Event(models.Model):
     date = models.DateTimeField()
     points = models.IntegerField(null=False, default=1)
     location = models.CharField(max_length=200, null=True)
+    latitude = models.FloatField(default=0, null=False)
+    longitude = models.FloatField(default=0, null=False)
     event_id = models.SlugField(blank=False, null=True)
     # A secret token used to generate ephemeral QR codes for each event
     token = models.IntegerField(default=0, editable=False)

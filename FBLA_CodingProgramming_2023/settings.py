@@ -132,3 +132,5 @@ DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
 # Security Options
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+GOOGLE_API_KEY = 'AIzaSyCPRHqWcKTCMW8hyWmO4aJrhU2ZW9ijlPo'

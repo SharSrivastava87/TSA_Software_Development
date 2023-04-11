@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+{% load static %}
+
+<head>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/favicon/site.webmanifest' %}">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    {% block meta %}
+    {% endblock %}
+    <title>{% block title %}{% endblock %} | Cypress Connect</title>
+
+    <!-- Load Styles -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">#}
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600&amp;display=swap">
+    <link rel="stylesheet" href="{% static 'css/Navbar-Centered-Links-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+
+<body class="d-flex flex-column h-100">
+<!-- Start: Navbar Right Links -->
+<nav class="navbar navbar-light navbar-expand-md py-3" style="background: #20296d;">
+    <div class="container"><a class="navbar-brand d-xxl-flex align-items-xxl-center"
+                              href="{% url 'CyRanch_Connect:index' %}"><img
+            src="{% static '\img\Cypress.png' %}" style="height: 100px; width: 100px; margin-right: 10px;"><span
+            style="font-size: 25px;font-family: 'Open Sans', sans-serif;color: rgba(255,255,255,0.9);">Cypress Connect</span></a>
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span
+                class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-2">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="{% url "CyRanch_Connect:donate" %}"
+                                        style="color: rgb(255,255,255);font-family: Hind, sans-serif;">Donate</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url "CyRanch_Connect:Location" %}"
+                                        style="color: rgb(255,255,255);font-family: Hind, sans-serif;">Location</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url "CyRanch_Connect:events" %}"
+                                        style="color: rgb(255,255,255);font-family: Hind, sans-serif;">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url "CyRanch_Connect:prizes" %}"
+                                        style="color: #ffffff;font-family: Hind, sans-serif;">Prizes</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{% url "CyRanch_Connect:leaderboard" %}"
+                                        style="color: rgb(255,255,255);font-family: Hind, sans-serif;">Leaderboard</a></li>
+            </ul>
+            <div style="padding-left: 10px;">{% if request.user.is_authenticated %}
+                <a class="login text-center text-decoration-none" href="#"
+                   style="margin-top: 5px;float: left; color: #FFD801; ">
+            {% else %}
+                <a class="login text-center text-decoration-none" href="{% url 'CyRanch_Connect:login' %}"
+                   style="margin-top: 5px; float: left; color: #FFD801;">
+            {% endif %}
+            <div class="d-flex flex-column">
+                <i class="fas fa-user-alt" style="color: #FFD801;"></i>
+                {% if request.user.is_authenticated %}
+                    <span style="font-family: Hind; font-size: x-small">✪{{ request.user.student.points }} | {% if request.user.is_staff %}Admin{% else %}{{ request.user.student.first_name }}{% endif %}</span>
+                {% else %}
+                    <span style="font-family: Hind; font-size: x-small">Log In</span>
+                {% endif %}</div>
+            </a></div>
+        </div>
+    </div>
+</nav>
+<!-- End: Navbar Right Links -->
+
+<!-- Custom Message Flashing -->
+{% if messages %}
+    <!-- Change position:fixed; to prevent floating notifications -->
+    <div style="position: absolute; top: 104px; right: 10px; z-index:10; position:fixed;">
+
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="toast fade show border-0" role="alert" style="display: block; margin-bottom: 5px">
+                    <div class="toast-header" style="background: #d5eca8"><i class="fa-solid fa-circle-check"
+                                                                             style="margin-right: 7px;color: var(--bs-success);"></i><strong
+                            class="me-auto"
+                            style="color: #000000;font-family: Hind, sans-serif;">Success</strong><small>1
+                        min
+                        ago</small>
+                        <button class="btn-close ms-2 mb-1 close shadow-none" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body d-xl-flex justify-content-between align-items-xl-center" role="alert"
+                         style="background: #ffffff;">
+                        <span style="font-size: 17px; color: #000000;">{{ message }}</span>
+                    </div>
+                </div>
+            {% elif message.tags == 'warning' %}
+                <div class="toast fade show border-0" role="alert" style="display: block; margin-bottom: 5px">
+                    <div class="toast-header" style="background: #fdfaaa;"><i class="fa-solid fa-circle-exclamation"
+                                                                              style="margin-right: 7px;color: var(--bs-warning);"></i><strong
+                            class="me-auto"
+                            style="color: #000000;font-family: Hind, sans-serif;">Warning</strong><small>1 min
+                        ago</small>
+                        <button class="btn-close ms-2 mb-1 close shadow-none" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body d-xl-flex justify-content-between align-items-xl-center" role="alert"
+                         style="background: #ffffff"><span
+                            style="font-size: 18px;color: #000000;">{{ message }}</span></div>
+                </div>
+            {% elif message.tags == 'info' %}
+                <div class="toast fade show border-0" role="alert" style="display: block; margin-bottom: 5px">
+                    <div class="toast-header" style="background: #aaf1fd;">
+                        <i class="fa-solid fa-circle-info" style="margin-right: 7px;color: var(--bs-info);"></i><strong
+                            class="me-auto"
+                            style="color: #000000;font-family: Hind, sans-serif;">Information</strong><small>1 min
+                        ago</small>
+                        <button class="btn-close ms-2 mb-1 close shadow-none" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body d-xl-flex justify-content-between align-items-xl-center" role="alert"
+                         style="background: #ffffff"><span
+                            style="font-size: 18px;color: #000000;">{{ message }}</span></div>
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="toast fade show border-0" role="alert" style="display: block; margin-bottom: 5px">
+                    <div class="toast-header" style="background: #ff9e98;">
+                        <i class="fa-solid fa-triangle-exclamation"
+                           style="margin-right: 7px;color: var(--bs-danger);"></i>
+                        <strong
+                                class="me-auto"
+                                style="color: #000000;font-family: Hind, sans-serif;">Error</strong><small>1 min
+                        ago</small>
+                        <button class="btn-close ms-2 mb-1 close shadow-none" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body d-xl-flex justify-content-between align-items-xl-center" role="alert"
+                         style="background: #ffffff"><span
+                            style="font-size: 18px;color: #000000;">{{ message }}</span></div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <script>
+        {% for message in messages %}
+            $(document).ready(function () {
+                $('.toast').toast('show');
+            });
+        {% endfor %}
+    </script>
+{% endif %}
+
+
+{% block content %}
+    <html>
+        <head>
+            <title>Simple Map</title>
+            <meta name="viewport" content="initial-scale=1.0">
+            <meta charset="utf-8">
+            <style>
+                /* Always set the map height explicitly to define the size of the div
+                 * element that contains the map. */
+                #map {
+                    height: 200%;
+                }
+                /* Optional: Makes the sample page fill the window. 29.749907, -95.358421*/
+                html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="map"></div>
+            <script>
+                var map;
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: 29.939484, lng: -95.719392},
+                        zoom: 14
+                    });
+
+                    {% for event in events %}
+                    var marker = new google.maps.Marker({
+                        position: {lat: {{ event.latitude }}, lng: {{ event.longitude }}},
+                        map: map,
+                        label: '{{ event.name }}'
+                    });
+                    {% endfor %}
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPRHqWcKTCMW8hyWmO4aJrhU2ZW9ijlPo&callback=initMap"
+                async defer></script>
+        </body>
+    </html>
+{% endblock %}
+
