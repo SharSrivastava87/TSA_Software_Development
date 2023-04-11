@@ -44,7 +44,6 @@ class Prize(models.Model):
     name = models.CharField(max_length=100, null=True)
     description = models.TextField(blank=True, null=True)
     price = models.IntegerField(blank=False, null=True)
-    event_id = models.SlugField(blank=False, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', null=True)
 
     def __str__(self):
