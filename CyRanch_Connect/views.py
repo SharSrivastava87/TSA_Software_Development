@@ -192,11 +192,14 @@ def register(request):
 
 
 def terms(request):
+    # renders the Terms & Conditions
     return render(request, 'CyRanch_Connect/Terms&Conditions.html')
 
 def donate(request):
+    # renders the donation page
     return render(request, 'CyRanch_Connect/donate.html')
 
 def location(request):
+    # renders the location
     events = Event.objects.all().filter(date__gte=timezone.now()).order_by('date')
     return render(request, 'CyRanch_Connect/Location.html', {'events': events})
